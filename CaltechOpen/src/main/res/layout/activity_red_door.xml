@@ -31,7 +31,7 @@
             android:textSize="25sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="7:30am - 5:30am"
+            android:text="7:30am - 5:30pm"
             android:gravity="center"
             android:layout_gravity="center"/>
     <TextView
