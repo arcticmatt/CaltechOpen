@@ -19,7 +19,7 @@
                 android:onClick="toCStore">
                 <TextView
                     android:id="@+id/title_view"
-                    android:textSize="@dimen/title_view_text_size_small"
+                    android:textSize="@dimen/title_view_text_size_xlarge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="C-Store"
@@ -30,7 +30,7 @@
 
                 <TextView
                     android:id="@+id/time_view"
-                    android:textSize="@dimen/time_view_text_size_small"
+                    android:textSize="@dimen/time_view_text_size_xlarge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="timeview"
@@ -41,7 +41,7 @@
                     android:layout_below="@id/title_view"/>
                 <TextView
                     android:id="@+id/open_view"
-                    android:textSize="@dimen/open_view_text_size_small"
+                    android:textSize="@dimen/open_view_text_size_xlarge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Closed"
@@ -52,7 +52,7 @@
                     android:paddingRight="10dp"/>
                 <TextView
                     android:id="@+id/info_view"
-                    android:textSize="@dimen/info_view_text_size_small"
+                    android:textSize="@dimen/info_view_text_size_xlarge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="until closing time"
@@ -77,7 +77,7 @@
                 android:onClick="toRedDoor">
                 <TextView
                     android:id="@+id/title_view2"
-                    android:textSize="@dimen/title_view_text_size_small"
+                    android:textSize="@dimen/title_view_text_size_xlarge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Red Door"
@@ -88,7 +88,7 @@
 
                 <TextView
                     android:id="@+id/time_view2"
-                    android:textSize="@dimen/time_view_text_size_small"
+                    android:textSize="@dimen/time_view_text_size_xlarge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="timeview"
@@ -99,7 +99,7 @@
                     android:layout_below="@id/title_view2"/>
                 <TextView
                     android:id="@+id/open_view2"
-                    android:textSize="@dimen/open_view_text_size_small"
+                    android:textSize="@dimen/open_view_text_size_xlarge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Closed"
@@ -110,7 +110,7 @@
                     android:paddingRight="10dp"/>
                 <TextView
                     android:id="@+id/info_view2"
-                    android:textSize="@dimen/info_view_text_size_small"
+                    android:textSize="@dimen/info_view_text_size_xlarge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="until closing time"
@@ -134,7 +134,7 @@
                 android:onClick="toChandler">
                 <TextView
                     android:id="@+id/title_view4"
-                    android:textSize="@dimen/title_view_text_size_small"
+                    android:textSize="@dimen/title_view_text_size_xlarge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Chandler"
@@ -145,7 +145,7 @@
 
                 <TextView
                     android:id="@+id/time_view4"
-                    android:textSize="@dimen/time_view_text_size_small"
+                    android:textSize="@dimen/time_view_text_size_xlarge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="timeview"
@@ -156,7 +156,7 @@
                     android:layout_below="@id/title_view4"/>
                 <TextView
                     android:id="@+id/open_view4"
-                    android:textSize="@dimen/open_view_text_size_small"
+                    android:textSize="@dimen/open_view_text_size_xlarge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Closed"
@@ -167,7 +167,7 @@
                     android:paddingRight="10dp"/>
                 <TextView
                     android:id="@+id/info_view4"
-                    android:textSize="@dimen/info_view_text_size_small"
+                    android:textSize="@dimen/info_view_text_size_xlarge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="until closing time"
@@ -191,7 +191,7 @@
                 android:onClick="toCafeBroad">
                 <TextView
                     android:id="@+id/title_view5"
-                    android:textSize="@dimen/title_view_text_size_small"
+                    android:textSize="@dimen/title_view_text_size_xlarge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Cafe Broad"
@@ -202,7 +202,7 @@
 
                 <TextView
                     android:id="@+id/time_view5"
-                    android:textSize="@dimen/time_view_text_size_small"
+                    android:textSize="@dimen/time_view_text_size_xlarge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="timeview"
@@ -213,7 +213,7 @@
                     android:layout_below="@id/title_view5"/>
                 <TextView
                     android:id="@+id/open_view5"
-                    android:textSize="@dimen/open_view_text_size_small"
+                    android:textSize="@dimen/open_view_text_size_xlarge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Closed"
@@ -224,7 +224,7 @@
                     android:paddingRight="10dp"/>
                 <TextView
                     android:id="@+id/info_view5"
-                    android:textSize="@dimen/info_view_text_size_small"
+                    android:textSize="@dimen/info_view_text_size_xlarge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="until closing time"
@@ -248,7 +248,7 @@
                 android:onClick="toBookstore">
                 <TextView
                     android:id="@+id/title_view3"
-                    android:textSize="@dimen/title_view_text_size_small"
+                    android:textSize="@dimen/title_view_text_size_xlarge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Bookstore"
@@ -259,7 +259,7 @@
 
                 <TextView
                     android:id="@+id/time_view3"
-                    android:textSize="@dimen/time_view_text_size_small"
+                    android:textSize="@dimen/time_view_text_size_xlarge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="timeview"
@@ -270,7 +270,7 @@
                     android:layout_below="@id/title_view3"/>
                 <TextView
                     android:id="@+id/open_view3"
-                    android:textSize="@dimen/open_view_text_size_small"
+                    android:textSize="@dimen/open_view_text_size_xlarge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Closed"
@@ -281,7 +281,7 @@
                     android:paddingRight="10dp"/>
                 <TextView
                     android:id="@+id/info_view3"
-                    android:textSize="@dimen/info_view_text_size_small"
+                    android:textSize="@dimen/info_view_text_size_xlarge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="until closing time"

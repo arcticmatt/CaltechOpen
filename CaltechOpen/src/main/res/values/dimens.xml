@@ -3,23 +3,40 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
-    <dimen name="title_view_text_size_large">42sp</dimen>
+    <dimen name="title_view_text_size_large">40sp</dimen>
     <dimen name="title_view_text_size_medium">40sp</dimen>
-    <dimen name="title_view_text_size_small">40sp</dimen>
-    <dimen name="title_view_text_size_xsmall">36sp</dimen>
+    <dimen name="title_view_text_size_small">36sp</dimen>
+    <dimen name="title_view_text_size_xlarge">50sp</dimen>
 
-    <dimen name="time_view_text_size_large">42sp</dimen>
+    <dimen name="time_view_text_size_large">38sp</dimen>
     <dimen name="time_view_text_size_medium">40sp</dimen>
-    <dimen name="time_view_text_size_small">40sp</dimen>
-    <dimen name="time_view_text_size_xsmall">36sp</dimen>
+    <dimen name="time_view_text_size_small">36sp</dimen>
+    <dimen name="time_view_text_size_xlarge">48sp</dimen>
 
-    <dimen name="open_view_text_size_large">37sp</dimen>
+    <dimen name="open_view_text_size_large">40sp</dimen>
     <dimen name="open_view_text_size_medium">40sp</dimen>
-    <dimen name="open_view_text_size_small">40sp</dimen>
-    <dimen name="open_view_text_size_xsmall">31sp</dimen>
+    <dimen name="open_view_text_size_small">32sp</dimen>
+    <dimen name="open_view_text_size_xlarge">50sp</dimen>
 
-    <dimen name="info_view_text_size_large">21sp</dimen>
+    <dimen name="info_view_text_size_large">24sp</dimen>
     <dimen name="info_view_text_size_medium">19sp</dimen>
     <dimen name="info_view_text_size_small">19sp</dimen>
-    <dimen name="info_view_text_size_xsmall">12sp</dimen>
+    <dimen name="info_view_text_size_xlarge">30sp</dimen>
+
+
+    <dimen name="store_title_xlarge">55sp</dimen>
+    <dimen name="store_title_large">40sp</dimen>
+    <dimen name="store_title_small">34sp</dimen>
+
+    <dimen name="store_days_xlarge">40sp</dimen>
+    <dimen name="store_days_large">30sp</dimen>
+    <dimen name="store_days_small">24sp</dimen>
+
+    <dimen name="store_times_xlarge">30sp</dimen>
+    <dimen name="store_times_large">25sp</dimen>
+    <dimen name="store_times_small">20sp</dimen>
+
+    <dimen name="store_breaks_xlarge">25sp</dimen>
+    <dimen name="store_breaks_large">17sp</dimen>
+    <dimen name="store_breaks_small">15sp</dimen>
     </resources>

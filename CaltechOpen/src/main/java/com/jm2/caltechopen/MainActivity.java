@@ -26,7 +26,6 @@ public class MainActivity extends Activity {
         Resources res = this.getResources();
         green = res.getColor(android.R.color.holo_green_dark);
         red = res.getColor(android.R.color.holo_red_dark);
-
     }
 
 
@@ -34,27 +33,9 @@ public class MainActivity extends Activity {
     public void onResume()
     {
         super.onResume();
-        boolean open = false;
-        boolean open2 = false;
-        boolean open3 = false;
-        boolean bookStoreWeekend = false;
-        boolean open4 = false;
-        boolean open5 = false;
-        long timeToOpen = 0;
-        long timeToOpen2 = 0;
-        long timeToOpen3 = 0;
-        long timeToOpen4 = 0;
-        long timeToOpen5 = 0;
-        long timeToClose = 0;
-        long timeToClose2 = 0;
-        long timeToClose3 = 0;
-        long timeToClose4 = 0;
-        long timeToClose5 = 0;
         Calendar countDownCalendar = Calendar.getInstance();
         int year = countDownCalendar.get(Calendar.YEAR);
         String[] titleArray = new String[4];
-        titleArray[0] = "C-Store";
-        titleArray[1] = "Red Door";
 
         long currentTimeMillis = countDownCalendar.getTimeInMillis();
         int month = countDownCalendar.get(Calendar.MONTH) + 1;
@@ -67,14 +48,84 @@ public class MainActivity extends Activity {
                 * 1000 + millisecond;
 
 
+        int[] viewIds1 = {R.id.time_view, R.id.info_view, R.id.title_view, R.id.open_view};
+        int[] viewIds2 = {R.id.time_view2, R.id.info_view2, R.id.title_view2, R.id.open_view2};
+        int[] viewIds3 = {R.id.time_view3, R.id.info_view3, R.id.title_view3, R.id.open_view3};
+        int[] viewIds4 = {R.id.time_view4, R.id.info_view4, R.id.title_view4, R.id.open_view4};
+        int[] viewIds5 = {R.id.time_view5, R.id.info_view5, R.id.title_view5, R.id.open_view5};
+        int[][] viewIds = {viewIds1, viewIds2, viewIds3, viewIds4, viewIds5};
+
+
+        for (int i = 0; i < 5; i++)
+        {
+            long[] openAndTime = getInfo(i, dayOfWeek, millisecondsInDay);
+            int isOpen = (int) openAndTime[0];
+            long startTime = openAndTime[1];
+            MyCountDownTimer myCountDownTimer = new MyCountDownTimer(startTime, 1000, isOpen,
+                    viewIds[i], this, i);
+            myCountDownTimer.start();
+        }
+
+    }
+
+    public void toCStore(View view)
+    {
+        Intent intent = new Intent(this, CStoreActivity.class);
+        startActivity(intent);
+    }
+
+    public void toRedDoor(View view)
+    {
+        Intent intent = new Intent(this, RedDoorActivity.class);
+        startActivity(intent);
+    }
+
+    public void toBookstore(View view)
+    {
+        Intent intent = new Intent(this, BookstoreActivity.class);
+        startActivity(intent);
+    }
+
+    public void toChandler(View view)
+    {
+        Intent intent = new Intent(this, ChandlerActivity.class);
+        startActivity(intent);
+    }
+
+    public void toCafeBroad(View view)
+    {
+        Intent intent = new Intent(this, CafeBroadActivity.class);
+        startActivity(intent);
+    }
+
+    public long[] getInfo(int store, int dayOfWeek, long millis) {
+        long[] returnVals = null;
+        if (store == 0)
+        {
+            returnVals = getCStoreInfo(dayOfWeek, millis);
+        }
+        else if (store == 1) {
+            returnVals = getRedDoorInfo(dayOfWeek, millis);
+        }
+        else if (store == 2) {
+            returnVals = getBookstoreInfo(dayOfWeek, millis);
+        }
+        else if (store == 3) {
+            returnVals = getChandlerInfo(dayOfWeek, millis);
+        }
+        else if (store == 4) {
+            returnVals = getCafeBroadInfo(dayOfWeek, millis);
+        }
+
+        return returnVals;
+    }
+
+    public long[] getCStoreInfo(int dayOfWeek, long millisecondsInDay) {
+        boolean open = true;
+        long timeToOpen = 0;
+        long timeToClose = 0;
+        /*** C store ***/
         if (dayOfWeek == Calendar.SUNDAY) {
-            /*Date mondayThruFridayOpen = new Date(year, month, dayOfWeek, 9, 30);
-            Date mondayThruFridayClose = new Date(year, month, dayOfWeek + 1, 1, 0);
-            Date mondayThruFridayBreak1Start = new Date(year, month, dayOfWeek, 21, 30);
-            Date mondayThruFridayBreak1End = new Date(year, month, dayOfWeek, 22, 0);
-            Date mondayThruFridayBreak2Start = new Date(year, month, dayOfWeek, 23, 15);
-            Date mondayThruFridayBreak2End = new Date(year, month, dayOfWeek, 23, 30);
-*/
             if (millisecondsInDay < 39600000) {
                 open = false;
                 timeToOpen = 39600000 - millisecondsInDay;
@@ -112,6 +163,8 @@ public class MainActivity extends Activity {
                 open = true;
                 timeToClose = 90000000 - millisecondsInDay;
             }
+
+
         }
         else if (dayOfWeek == Calendar.MONDAY || dayOfWeek == Calendar.TUESDAY
                 || dayOfWeek == Calendar.WEDNESDAY
@@ -174,36 +227,51 @@ public class MainActivity extends Activity {
             }
         }
 
+        long[] returnVals = new long[2];
+        if (open) {
+            returnVals[0] = 0;
+            returnVals[1] = timeToClose;
+        }
+        else {
+            returnVals[0] = 1;
+            returnVals[1] = timeToOpen;
+        }
+        return returnVals;
+    }
 
-
+    public long[] getRedDoorInfo(int dayOfWeek, long millisecondsInDay) {
+        boolean open = true;
+        long timeToOpen = 0;
+        long timeToClose = 0;
+        /*** red door ***/
         if (dayOfWeek == Calendar.MONDAY || dayOfWeek == Calendar.TUESDAY
                 || dayOfWeek == Calendar.WEDNESDAY
                 || dayOfWeek == Calendar.THURSDAY)
         {
             if (millisecondsInDay < 7200000)
             {
-                open2 = true;
-                timeToClose2 = 7200000 - millisecondsInDay;
+                open = true;
+                timeToClose = 7200000 - millisecondsInDay;
             }
             if (millisecondsInDay >= 7200000 && millisecondsInDay < 27000000)
             {
-                open2 = false;
-                timeToOpen2 = 27000000 - millisecondsInDay;
+                open = false;
+                timeToOpen = 27000000 - millisecondsInDay;
             }
             if (millisecondsInDay >= 27000000 && millisecondsInDay < 63000000)
             {
-                open2 = true;
-                timeToClose2 = 63000000 - millisecondsInDay;
+                open = true;
+                timeToClose = 63000000 - millisecondsInDay;
             }
             if (millisecondsInDay >= 63000000 && millisecondsInDay < 79200000)
             {
-                open2 = false;
-                timeToOpen2 = 79200000 - millisecondsInDay;
+                open = false;
+                timeToOpen = 79200000 - millisecondsInDay;
             }
             if (millisecondsInDay >= 79200000)
             {
-                open2 = true;
-                timeToClose2 = 7200000 + (86400000 - millisecondsInDay);
+                open = true;
+                timeToClose = 7200000 + (86400000 - millisecondsInDay);
             }
 
         }
@@ -211,92 +279,124 @@ public class MainActivity extends Activity {
         {
             if (millisecondsInDay < 7200000)
             {
-                open2 = true;
-                timeToClose2 = 7200000 - millisecondsInDay;
+                open = true;
+                timeToClose = 7200000 - millisecondsInDay;
             }
             if (millisecondsInDay >= 7200000 && millisecondsInDay < 27000000)
             {
-                open2 = false;
-                timeToOpen2 = 27000000 - millisecondsInDay;
+                open = false;
+                timeToOpen = 27000000 - millisecondsInDay;
             }
             if (millisecondsInDay >= 27000000 && millisecondsInDay < 61200000)
             {
-                open2 = true;
-                timeToClose2 = 61200000 - millisecondsInDay;
+                open = true;
+                timeToClose = 61200000 - millisecondsInDay;
             }
             if (millisecondsInDay >= 61200000)
             {
-                open2 = false;
-                timeToOpen2 = (86400000 - millisecondsInDay) + 86400000 + 79200000;
+                open = false;
+                timeToOpen = (86400000 - millisecondsInDay) + 86400000 + 79200000;
             }
         }
         else if (dayOfWeek == Calendar.SATURDAY)
         {
-            open2 = false;
-            timeToOpen2 = (86400000 - millisecondsInDay) + 79200000;
+            open = false;
+            timeToOpen = (86400000 - millisecondsInDay) + 79200000;
         }
         else if (dayOfWeek == Calendar.SUNDAY)
         {
             if (millisecondsInDay < 79200000) {
-                open2 = false;
-                timeToOpen2 = 79200000 - millisecondsInDay;
+                open = false;
+                timeToOpen = 79200000 - millisecondsInDay;
             }
             if (millisecondsInDay >= 79200000) {
-                open2 = true;
-                timeToClose2 = 7200000 + (86400000 - millisecondsInDay);
+                open = true;
+                timeToClose = 7200000 + (86400000 - millisecondsInDay);
             }
         }
 
+        long[] returnVals = new long[2];
+        if (open) {
+            returnVals[0] = 0;
+            returnVals[1] = timeToClose;
+        }
+        else {
+            returnVals[0] = 1;
+            returnVals[1] = timeToOpen;
+        }
+        return returnVals;
+    }
+
+    public long[] getBookstoreInfo(int dayOfWeek, long millisecondsInDay) {
+        boolean open = true;
+        long timeToOpen = 0;
+        long timeToClose = 0;
+        /*** book store ***/
         if (dayOfWeek == Calendar.MONDAY || dayOfWeek == Calendar.TUESDAY
                 || dayOfWeek == Calendar.WEDNESDAY
                 || dayOfWeek == Calendar.THURSDAY)
         {
             if (millisecondsInDay < 30600000)
             {
-                open3 = false;
-                timeToOpen3 = 30600000 - millisecondsInDay;
+                open = false;
+                timeToOpen = 30600000 - millisecondsInDay;
             }
             else if (millisecondsInDay >= 30600000 && millisecondsInDay < 63000000)
             {
-                open3 = true;
-                timeToClose3 = 63000000 - millisecondsInDay;
+                open = true;
+                timeToClose = 63000000 - millisecondsInDay;
             }
             else if (millisecondsInDay >= 63000000)
             {
-                open3 = false;
-                timeToOpen3 = 86400000 - millisecondsInDay + 30600000;
+                open = false;
+                timeToOpen = 86400000 - millisecondsInDay + 30600000;
             }
         }
         else if (dayOfWeek == Calendar.FRIDAY)
         {
             if (millisecondsInDay < 30600000)
             {
-                open3 = false;
-                timeToOpen3 = 30600000 - millisecondsInDay;
+                open = false;
+                timeToOpen = 30600000 - millisecondsInDay;
             }
             else if (millisecondsInDay >= 30600000 && millisecondsInDay < 63000000)
             {
-                open3 = true;
-                timeToClose3 = 63000000 - millisecondsInDay;
+                open = true;
+                timeToClose = 63000000 - millisecondsInDay;
             }
             else if (millisecondsInDay >= 63000000)
             {
-                open3 = false;
-                timeToOpen3 = 86400000 - millisecondsInDay + 86400000 * 2 + 30600000;
+                open = false;
+                timeToOpen = 86400000 - millisecondsInDay + 86400000 * 2 + 30600000;
             }
         }
         else if (dayOfWeek == Calendar.SATURDAY)
         {
-            open3 = false;
-            timeToOpen3 = 86400000 - millisecondsInDay + 86400000 + 30600000;
+            open = false;
+            timeToOpen = 86400000 - millisecondsInDay + 86400000 + 30600000;
         }
         else if (dayOfWeek == Calendar.SUNDAY)
         {
-            open3 = false;
-            timeToOpen3 = 86400000 - millisecondsInDay + 30600000;
+            open = false;
+            timeToOpen = 86400000 - millisecondsInDay + 30600000;
         }
 
+        long[] returnVals = new long[2];
+        if (open) {
+            returnVals[0] = 0;
+            returnVals[1] = timeToClose;
+        }
+        else {
+            returnVals[0] = 1;
+            returnVals[1] = timeToOpen;
+        }
+        return returnVals;
+    }
 
+    public long[] getChandlerInfo(int dayOfWeek, long millisecondsInDay) {
+        boolean open = true;
+        long timeToOpen = 0;
+        long timeToClose = 0;
         /*** Chandler ***/
         if (dayOfWeek == Calendar.MONDAY || dayOfWeek == Calendar.TUESDAY
                 || dayOfWeek == Calendar.WEDNESDAY
@@ -304,49 +404,65 @@ public class MainActivity extends Activity {
         {
             if (millisecondsInDay < 25200000)
             {
-                open4 = false;
-                timeToOpen4 = 25200000 - millisecondsInDay;
+                open = false;
+                timeToOpen = 25200000 - millisecondsInDay;
             }
             else if (millisecondsInDay >= 25200000 && millisecondsInDay < 52200000)
             {
-                open4 = true;
-                timeToClose4 = 52200000 - millisecondsInDay;
+                open = true;
+                timeToClose = 52200000 - millisecondsInDay;
             }
             else if (millisecondsInDay >= 52200000)
             {
-                open4 = false;
-                timeToOpen4 = 86400000 - millisecondsInDay + 27900000;
+                open = false;
+                timeToOpen = 86400000 - millisecondsInDay + 27900000;
             }
         }
         else if (dayOfWeek == Calendar.FRIDAY)
         {
             if (millisecondsInDay < 25200000)
             {
-                open4 = false;
-                timeToOpen4 = 25200000 - millisecondsInDay;
+                open = false;
+                timeToOpen = 25200000 - millisecondsInDay;
             }
             else if (millisecondsInDay >= 25200000 && millisecondsInDay < 52200000)
             {
-                open4 = true;
-                timeToClose4 = 52200000 - millisecondsInDay;
+                open = true;
+                timeToClose = 52200000 - millisecondsInDay;
             }
             else if (millisecondsInDay >= 52200000)
             {
-                open4 = false;
-                timeToOpen4 = 86400000 - millisecondsInDay + 86400000 * 2 + 25200000;
+                open = false;
+                timeToOpen = 86400000 - millisecondsInDay + 86400000 * 2 + 25200000;
             }
         }
         else if (dayOfWeek == Calendar.SATURDAY)
         {
-            open4 = false;
-            timeToOpen4 = 86400000 - millisecondsInDay + 86400000 + 25200000;
+            open = false;
+            timeToOpen = 86400000 - millisecondsInDay + 86400000 + 25200000;
         }
         else if (dayOfWeek == Calendar.SUNDAY)
         {
-            open4 = false;
-            timeToOpen4 = 86400000 - millisecondsInDay + 25200000;
+            open = false;
+            timeToOpen = 86400000 - millisecondsInDay + 25200000;
         }
 
+        long[] returnVals = new long[2];
+        if (open) {
+            returnVals[0] = 0;
+            returnVals[1] = timeToClose;
+        }
+        else {
+            returnVals[0] = 1;
+            returnVals[1] = timeToOpen;
+        }
+        return returnVals;
+    }
+
+    public long[] getCafeBroadInfo(int dayOfWeek, long millisecondsInDay) {
+        boolean open = true;
+        long timeToOpen = 0;
+        long timeToClose = 0;
         /*** Cafe Broad ***/
         if (dayOfWeek == Calendar.MONDAY || dayOfWeek == Calendar.TUESDAY
                 || dayOfWeek == Calendar.WEDNESDAY
@@ -354,461 +470,60 @@ public class MainActivity extends Activity {
         {
             if (millisecondsInDay < 27900000)
             {
-                open5 = false;
-                timeToOpen5 = 27900000 - millisecondsInDay;
+                open = false;
+                timeToOpen = 27900000 - millisecondsInDay;
             }
             else if (millisecondsInDay >= 27900000 && millisecondsInDay < 52200000)
             {
-                open5 = true;
-                timeToClose5 = 52200000 - millisecondsInDay;
+                open = true;
+                timeToClose = 52200000 - millisecondsInDay;
             }
             else if (millisecondsInDay >= 52200000)
             {
-                open5 = false;
-                timeToOpen5 = 86400000 - millisecondsInDay + 27900000;
+                open = false;
+                timeToOpen = 86400000 - millisecondsInDay + 27900000;
             }
         }
         else if (dayOfWeek == Calendar.FRIDAY)
         {
             if (millisecondsInDay < 27900000)
             {
-                open5 = false;
-                timeToOpen5 = 27900000 - millisecondsInDay;
+                open = false;
+                timeToOpen = 27900000 - millisecondsInDay;
             }
             else if (millisecondsInDay >= 27900000 && millisecondsInDay < 52200000)
             {
-                open5 = true;
-                timeToClose5 = 52200000 - millisecondsInDay;
+                open = true;
+                timeToClose = 52200000 - millisecondsInDay;
             }
             else if (millisecondsInDay >= 52200000)
             {
-                open5 = false;
-                timeToOpen5 = 86400000 - millisecondsInDay + 86400000 * 2 + 27900000;
+                open = false;
+                timeToOpen = 86400000 - millisecondsInDay + 86400000 * 2 + 27900000;
             }
         }
         else if (dayOfWeek == Calendar.SATURDAY)
         {
-            open5 = false;
-            timeToOpen5 = 86400000 - millisecondsInDay + 86400000 + 27900000;
+            open = false;
+            timeToOpen = 86400000 - millisecondsInDay + 86400000 + 27900000;
         }
         else if (dayOfWeek == Calendar.SUNDAY)
         {
-            open5 = false;
-            timeToOpen5 = 86400000 - millisecondsInDay + 27900000;
+            open = false;
+            timeToOpen = 86400000 - millisecondsInDay + 27900000;
         }
 
-
-        final String infoClosingTime = " until closed";
-        final String infoOpenTime = " until open";
-        final TextView timeView = (TextView) findViewById(R.id.time_view);
-        final TextView infoView = (TextView) findViewById(R.id.info_view);
-        final TextView titleView = (TextView) findViewById(R.id.title_view);
-        final TextView openView = (TextView) findViewById(R.id.open_view);
-
-        final TextView timeView2 = (TextView) findViewById(R.id.time_view2);
-        final TextView infoView2 = (TextView) findViewById(R.id.info_view2);
-        final TextView titleView2 = (TextView) findViewById(R.id.title_view2);
-        final TextView openView2 = (TextView) findViewById(R.id.open_view2);
-
-        final TextView timeView3 = (TextView) findViewById(R.id.time_view3);
-        final TextView infoView3 = (TextView) findViewById(R.id.info_view3);
-        final TextView titleView3 = (TextView) findViewById(R.id.title_view3);
-        final TextView openView3 = (TextView) findViewById(R.id.open_view3);
-
-        final TextView timeView4 = (TextView) findViewById(R.id.time_view4);
-        final TextView infoView4 = (TextView) findViewById(R.id.info_view4);
-        final TextView titleView4 = (TextView) findViewById(R.id.title_view4);
-        final TextView openView4 = (TextView) findViewById(R.id.open_view4);
-
-        final TextView timeView5 = (TextView) findViewById(R.id.time_view5);
-        final TextView infoView5 = (TextView) findViewById(R.id.info_view5);
-        final TextView titleView5 = (TextView) findViewById(R.id.title_view5);
-        final TextView openView5 = (TextView) findViewById(R.id.open_view5);
-
+        long[] returnVals = new long[2];
         if (open) {
-            CountDownTimer myCountDownTimer = new CountDownTimer(timeToClose, 1000) {
-                @Override
-                public void onTick(long millisUntilFinished) {
-                    long hoursToClose = millisUntilFinished / 3600000;
-                    long minutesToClose = millisUntilFinished / 60000 - hoursToClose * 60;
-                    long secondsToClose = millisUntilFinished / 1000 - minutesToClose * 60
-                            - hoursToClose * 60 * 60;
-                    String minutesToCloseString = Long.toString(minutesToClose);
-                    if (minutesToClose < 10)
-                    {
-                        minutesToCloseString = "0" + minutesToClose;
-                    }
-                    String secondsToCloseString = Long.toString(secondsToClose);
-                    if (secondsToClose < 10) {
-                        secondsToCloseString = "0" + secondsToClose;
-                    }
-                    String time = hoursToClose + ":" + minutesToCloseString
-                            + ":" + secondsToCloseString;
-
-                    timeView.setText(time);
-                    infoView.setText(infoClosingTime);
-                    titleView.setText("C-Store");
-                    openView.setText("Open");
-                    openView.setTextColor(green);
-
-                }
-
-                @Override
-                public void onFinish() {
-                    onResume();
-                }
-            }.start();
+            returnVals[0] = 0;
+            returnVals[1] = timeToClose;
         }
-
-        if (open2) {
-            CountDownTimer myCountDownTimer = new CountDownTimer(timeToClose2, 1000) {
-                @Override
-                public void onTick(long millisUntilFinished) {
-                    long hoursToClose = millisUntilFinished / 3600000;
-                    long minutesToClose = millisUntilFinished / 60000 - hoursToClose * 60;
-                    long secondsToClose = millisUntilFinished / 1000 - minutesToClose * 60
-                            - hoursToClose * 60 * 60;
-                    String minutesToCloseString = Long.toString(minutesToClose);
-                    if (minutesToClose < 10)
-                    {
-                        minutesToCloseString = "0" + minutesToClose;
-                    }
-                    String secondsToCloseString = Long.toString(secondsToClose);
-                    if (secondsToClose < 10) {
-                        secondsToCloseString = "0" + secondsToClose;
-                    }
-                    String time = hoursToClose + ":" + minutesToCloseString
-                            + ":" + secondsToCloseString;
-
-                    timeView2.setText(time);
-                    infoView2.setText(infoClosingTime);
-                    titleView2.setText("Red Door");
-                    openView2.setText("Open");
-                    openView2.setTextColor(green);
-                }
-
-                @Override
-                public void onFinish() {
-                    onResume();
-                }
-            }.start();
+        else {
+            returnVals[0] = 1;
+            returnVals[1] = timeToOpen;
         }
-
-        if (open3) {
-            CountDownTimer myCountDownTimer = new CountDownTimer(timeToClose3, 1000) {
-                @Override
-                public void onTick(long millisUntilFinished) {
-                    long hoursToClose = millisUntilFinished / 3600000;
-                    long minutesToClose = millisUntilFinished / 60000 - hoursToClose * 60;
-                    long secondsToClose = millisUntilFinished / 1000 - minutesToClose * 60
-                            - hoursToClose * 60 * 60;
-                    String minutesToCloseString = Long.toString(minutesToClose);
-                    if (minutesToClose < 10)
-                    {
-                        minutesToCloseString = "0" + minutesToClose;
-                    }
-                    String secondsToCloseString = Long.toString(secondsToClose);
-                    if (secondsToClose < 10) {
-                        secondsToCloseString = "0" + secondsToClose;
-                    }
-                    String time = hoursToClose + ":" + minutesToCloseString
-                            + ":" + secondsToCloseString;
-
-                    timeView3.setText(time);
-                    infoView3.setText(infoClosingTime);
-                    titleView3.setText("Bookstore");
-                    openView3.setText("Open");
-                    openView3.setTextColor(green);
-                }
-
-                @Override
-                public void onFinish() {
-                    onResume();
-                }
-            }.start();
-        }
-
-        if (open4) {
-            CountDownTimer myCountDownTimer = new CountDownTimer(timeToClose4, 1000) {
-                @Override
-                public void onTick(long millisUntilFinished) {
-                    long hoursToClose = millisUntilFinished / 3600000;
-                    long minutesToClose = millisUntilFinished / 60000 - hoursToClose * 60;
-                    long secondsToClose = millisUntilFinished / 1000 - minutesToClose * 60
-                            - hoursToClose * 60 * 60;
-                    String minutesToCloseString = Long.toString(minutesToClose);
-                    if (minutesToClose < 10)
-                    {
-                        minutesToCloseString = "0" + minutesToClose;
-                    }
-                    String secondsToCloseString = Long.toString(secondsToClose);
-                    if (secondsToClose < 10) {
-                        secondsToCloseString = "0" + secondsToClose;
-                    }
-                    String time = hoursToClose + ":" + minutesToCloseString
-                            + ":" + secondsToCloseString;
-
-                    timeView4.setText(time);
-                    infoView4.setText(infoClosingTime);
-                    titleView4.setText("Chandler");
-                    openView4.setText("Open");
-                    openView4.setTextColor(green);
-                }
-
-                @Override
-                public void onFinish() {
-                    onResume();
-                }
-            }.start();
-        }
-
-        if (open5) {
-            CountDownTimer myCountDownTimer = new CountDownTimer(timeToClose5, 1000) {
-                @Override
-                public void onTick(long millisUntilFinished) {
-                    long hoursToClose = millisUntilFinished / 3600000;
-                    long minutesToClose = millisUntilFinished / 60000 - hoursToClose * 60;
-                    long secondsToClose = millisUntilFinished / 1000 - minutesToClose * 60
-                            - hoursToClose * 60 * 60;
-                    String minutesToCloseString = Long.toString(minutesToClose);
-                    if (minutesToClose < 10)
-                    {
-                        minutesToCloseString = "0" + minutesToClose;
-                    }
-                    String secondsToCloseString = Long.toString(secondsToClose);
-                    if (secondsToClose < 10) {
-                        secondsToCloseString = "0" + secondsToClose;
-                    }
-                    String time = hoursToClose + ":" + minutesToCloseString
-                            + ":" + secondsToCloseString;
-
-                    timeView5.setText(time);
-                    infoView5.setText(infoClosingTime);
-                    titleView5.setText("Cafe Broad");
-                    openView5.setText("Open");
-                    openView5.setTextColor(green);
-                }
-
-                @Override
-                public void onFinish() {
-                    onResume();
-                }
-            }.start();
-        }
-
-
-
-        if (!open) {
-            CountDownTimer myCountDownTimer = new CountDownTimer(timeToOpen, 1000) {
-                @Override
-                public void onTick(long millisUntilFinished) {
-                    long hoursToOpen = millisUntilFinished / 3600000;
-                    long minutesToOpen = millisUntilFinished / 60000 - hoursToOpen * 60;
-                    long secondsToOpen = millisUntilFinished / 1000 - minutesToOpen * 60
-                            - hoursToOpen * 60 * 60;
-                    String minutesToOpenString = Long.toString(minutesToOpen);
-                    if (minutesToOpen < 10)
-                    {
-                        minutesToOpenString = "0" + minutesToOpenString;
-                    }
-                    String secondsToOpenString = Long.toString(secondsToOpen);
-                    if (secondsToOpen < 10) {
-                        secondsToOpenString = "0" + secondsToOpen;
-                    }
-
-                    String time = hoursToOpen + ":" + minutesToOpenString
-                            + ":" + secondsToOpenString;
-
-                    timeView.setText(time);
-                    infoView.setText(infoOpenTime);
-                    titleView.setText("C-Store");
-                    openView.setText("Closed");
-                    openView.setTextColor(red);
-
-                }
-
-                @Override
-                public void onFinish() {
-                    onResume();
-                }
-            }.start();
-        }
-
-        if (!open2) {
-            CountDownTimer myCountDownTimer = new CountDownTimer(timeToOpen2, 1000) {
-                @Override
-                public void onTick(long millisUntilFinished) {
-                    long hoursToOpen = millisUntilFinished / 3600000;
-                    long minutesToOpen = millisUntilFinished / 60000 - hoursToOpen * 60;
-                    long secondsToOpen = millisUntilFinished / 1000 - minutesToOpen * 60
-                            - hoursToOpen * 60 * 60;
-                    String minutesToOpenString = Long.toString(minutesToOpen);
-                    if (minutesToOpen < 10)
-                    {
-                        minutesToOpenString = "0" + minutesToOpenString;
-                    }
-                    String secondsToOpenString = Long.toString(secondsToOpen);
-                    if (secondsToOpen < 10) {
-                        secondsToOpenString = "0" + secondsToOpen;
-                    }
-
-                    String time = hoursToOpen + ":" + minutesToOpenString
-                            + ":" + secondsToOpenString;
-
-                    timeView2.setText(time);
-                    infoView2.setText(infoOpenTime);
-                    titleView2.setText("Red Door");
-                    openView2.setText("Closed");
-                    openView2.setTextColor(red);
-
-                }
-
-                @Override
-                public void onFinish() {
-                    onResume();
-                }
-            }.start();
-        }
-
-        if (!open3) {
-            CountDownTimer myCountDownTimer = new CountDownTimer(timeToOpen3, 1000) {
-                @Override
-                public void onTick(long millisUntilFinished) {
-                    long hoursToOpen = millisUntilFinished / 3600000;
-                    long minutesToOpen = millisUntilFinished / 60000 - hoursToOpen * 60;
-                    long secondsToOpen = millisUntilFinished / 1000 - minutesToOpen * 60
-                            - hoursToOpen * 60 * 60;
-                    String minutesToOpenString = Long.toString(minutesToOpen);
-                    if (minutesToOpen < 10)
-                    {
-                        minutesToOpenString = "0" + minutesToOpenString;
-                    }
-                    String secondsToOpenString = Long.toString(secondsToOpen);
-                    if (secondsToOpen < 10) {
-                        secondsToOpenString = "0" + secondsToOpen;
-                    }
-
-                    String time = hoursToOpen + ":" + minutesToOpenString
-                            + ":" + secondsToOpenString;
-
-                    timeView3.setText(time);
-                    infoView3.setText(infoOpenTime);
-                    titleView3.setText("Bookstore");
-                    openView3.setText("Closed");
-                    openView3.setTextColor(red);
-
-                }
-
-                @Override
-                public void onFinish() {
-                    onResume();
-                }
-            }.start();
-        }
-
-        if (!open4) {
-        CountDownTimer myCountDownTimer = new CountDownTimer(timeToOpen4, 1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-                long hoursToOpen = millisUntilFinished / 3600000;
-                long minutesToOpen = millisUntilFinished / 60000 - hoursToOpen * 60;
-                long secondsToOpen = millisUntilFinished / 1000 - minutesToOpen * 60
-                        - hoursToOpen * 60 * 60;
-                String minutesToOpenString = Long.toString(minutesToOpen);
-                if (minutesToOpen < 10)
-                {
-                    minutesToOpenString = "0" + minutesToOpenString;
-                }
-                String secondsToOpenString = Long.toString(secondsToOpen);
-                if (secondsToOpen < 10) {
-                    secondsToOpenString = "0" + secondsToOpen;
-                }
-
-                String time = hoursToOpen + ":" + minutesToOpenString
-                        + ":" + secondsToOpenString;
-
-                timeView4.setText(time);
-                infoView4.setText(infoOpenTime);
-                titleView4.setText("Chandler");
-                openView4.setText("Closed");
-                openView4.setTextColor(red);
-
-            }
-
-            @Override
-            public void onFinish() {
-                onResume();
-            }
-        }.start();
-        }
-
-
-        if (!open5) {
-            CountDownTimer myCountDownTimer = new CountDownTimer(timeToOpen5, 1000) {
-                @Override
-                public void onTick(long millisUntilFinished) {
-                    long hoursToOpen = millisUntilFinished / 3600000;
-                    long minutesToOpen = millisUntilFinished / 60000 - hoursToOpen * 60;
-                    long secondsToOpen = millisUntilFinished / 1000 - minutesToOpen * 60
-                            - hoursToOpen * 60 * 60;
-                    String minutesToOpenString = Long.toString(minutesToOpen);
-                    if (minutesToOpen < 10)
-                    {
-                        minutesToOpenString = "0" + minutesToOpenString;
-                    }
-                    String secondsToOpenString = Long.toString(secondsToOpen);
-                    if (secondsToOpen < 10) {
-                        secondsToOpenString = "0" + secondsToOpen;
-                    }
-
-                    String time = hoursToOpen + ":" + minutesToOpenString
-                            + ":" + secondsToOpenString;
-
-                    timeView5.setText(time);
-                    infoView5.setText(infoOpenTime);
-                    titleView5.setText("Cafe Broad");
-                    openView5.setText("Closed");
-                    openView5.setTextColor(red);
-
-                }
-
-                @Override
-                public void onFinish() {
-                    onResume();
-                }
-            }.start();
-        }
-
-
+        return returnVals;
     }
 
-    public void toCStore(View view)
-    {
-        Intent intent = new Intent(this, CStoreActivity.class);
-        startActivity(intent);
-    }
 
-    public void toRedDoor(View view)
-    {
-        Intent intent = new Intent(this, RedDoorActivity.class);
-        startActivity(intent);
-    }
-
-    public void toBookstore(View view)
-    {
-        Intent intent = new Intent(this, BookstoreActivity.class);
-        startActivity(intent);
-    }
-
-    public void toChandler(View view)
-    {
-        Intent intent = new Intent(this, ChandlerActivity.class);
-        startActivity(intent);
-    }
-
-    public void toCafeBroad(View view)
-    {
-        Intent intent = new Intent(this, CafeBroadActivity.class);
-        startActivity(intent);
-    }
 }

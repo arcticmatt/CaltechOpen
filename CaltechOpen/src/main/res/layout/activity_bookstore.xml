@@ -11,7 +11,7 @@
 
     <TextView
             android:id="@+id/title"
-            android:textSize="40sp"
+            android:textSize="@dimen/store_title_large"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Bookstore"
@@ -19,7 +19,7 @@
             android:layout_gravity="center"/>
     <TextView
             android:id="@+id/weekdays"
-            android:textSize="30sp"
+            android:textSize="@dimen/store_days_large"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Monday - Friday"
@@ -28,7 +28,7 @@
             android:paddingTop="10dp"/>
     <TextView
             android:id="@+id/times"
-            android:textSize="25sp"
+            android:textSize="@dimen/store_times_large"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="8:30am - 5:30pm"
