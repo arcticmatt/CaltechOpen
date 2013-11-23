@@ -10,5 +10,9 @@
     <string name="bookstore">Bookstore</string>
     <string name="chandler">Chandler</string>
     <string name="cafe_broad">Cafe Broad</string>
+    <string name="braun_gym">Braun Gym</string>
 
+    <string name="braun_info">Facility hours are subject to change. Please visit http://goo.gl/68ijYF
+        for more info.
+    </string>
 </resources>

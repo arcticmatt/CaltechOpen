@@ -22,7 +22,7 @@
 
             <TextView
                 android:id="@+id/title"
-                android:textSize="@dimen/store_title_large"
+                android:textSize="@dimen/store_title_small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="C-Store"
@@ -31,7 +31,7 @@
 
             <TextView
                 android:id="@+id/weekdays"
-                android:textSize="@dimen/store_days_large"
+                android:textSize="@dimen/store_days_small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Monday - Friday"
@@ -41,7 +41,7 @@
 
             <TextView
                 android:id="@+id/times"
-                android:textSize="@dimen/store_times_large"
+                android:textSize="@dimen/store_times_small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="9:30am - 1:00am"
@@ -50,7 +50,7 @@
 
             <TextView
                 android:id="@+id/breaks"
-                android:textSize="@dimen/store_breaks_large"
+                android:textSize="@dimen/store_breaks_small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="(closed for breaks from 9:30pm - 10:00pm and 11:15pm - 11:30pm)"
@@ -59,7 +59,7 @@
 
             <TextView
                 android:id="@+id/Saturday"
-                android:textSize="@dimen/store_days_large"
+                android:textSize="@dimen/store_days_small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Saturday"
@@ -69,7 +69,7 @@
 
             <TextView
                 android:id="@+id/times2"
-                android:textSize="@dimen/store_times_large"
+                android:textSize="@dimen/store_times_small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="11:00am - 10:00pm"
@@ -78,7 +78,7 @@
 
             <TextView
                 android:id="@+id/breaks2"
-                android:textSize="@dimen/store_breaks_large"
+                android:textSize="@dimen/store_breaks_small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="(closed for breaks from 2:00pm - 2:15 pm, 3:45pm - 4:15pm, and 8:00pm - 8:15pm)"
@@ -87,7 +87,7 @@
 
             <TextView
                 android:id="@+id/Sunday"
-                android:textSize="@dimen/store_days_large"
+                android:textSize="@dimen/store_days_small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Sunday"
@@ -97,7 +97,7 @@
 
             <TextView
                 android:id="@+id/times3"
-                android:textSize="@dimen/store_times_large"
+                android:textSize="@dimen/store_times_small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="11:00am - 1:00am"
@@ -106,7 +106,7 @@
 
             <TextView
                 android:id="@+id/breaks3"
-                android:textSize="@dimen/store_breaks_large"
+                android:textSize="@dimen/store_breaks_small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="(closed for breaks from 12:00pm - 12:15pm, 2:00pm - 2:30pm, 5:00pm - 5:15pm, 7:30pm - 8:00pm, and 11:00pm - 11:15pm)"

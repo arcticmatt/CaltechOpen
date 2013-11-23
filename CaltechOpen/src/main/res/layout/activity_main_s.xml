@@ -2,20 +2,23 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <ScrollView android:id="@+id/ScrollView1"
+
+    <ScrollView
+        android:id="@+id/ScrollView1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
+
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
+            android:layout_height="match_parent">
             <!-- C - STORE -->
             <RelativeLayout
                 android:orientation="horizontal"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:onClick="toCStore">
+
                 <TextView
                     android:id="@+id/title_view"
                     android:textSize="@dimen/title_view_text_size_small"
@@ -25,7 +28,7 @@
                     android:gravity="left"
                     android:layout_gravity="left"
                     android:layout_alignParentLeft="true"
-                    android:paddingLeft="10dp"/>
+                    android:paddingLeft="10dp" />
 
                 <TextView
                     android:id="@+id/time_view"
@@ -37,7 +40,8 @@
                     android:layout_gravity="left"
                     android:paddingLeft="10dp"
                     android:layout_alignParentLeft="true"
-                    android:layout_below="@id/title_view"/>
+                    android:layout_below="@id/title_view" />
+
                 <TextView
                     android:id="@+id/open_view"
                     android:textSize="@dimen/open_view_text_size_small"
@@ -48,7 +52,8 @@
                     android:layout_gravity="right"
                     android:layout_alignParentRight="true"
                     android:layout_alignBaseline="@id/title_view"
-                    android:paddingRight="10dp"/>
+                    android:paddingRight="10dp" />
+
                 <TextView
                     android:id="@+id/info_view"
                     android:textSize="@dimen/info_view_text_size_small"
@@ -57,14 +62,13 @@
                     android:text="until closing time"
                     android:paddingLeft="10dp"
                     android:layout_toRightOf="@id/time_view"
-                    android:layout_alignBaseline="@id/time_view"
-                    />
+                    android:layout_alignBaseline="@id/time_view" />
             </RelativeLayout>
 
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="2dp"
-                android:background="@android:color/darker_gray"/>
+                android:background="@android:color/darker_gray" />
 
 
             <!-- RED DOOR -->
@@ -74,6 +78,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:onClick="toRedDoor">
+
                 <TextView
                     android:id="@+id/title_view2"
                     android:textSize="@dimen/title_view_text_size_small"
@@ -83,7 +88,7 @@
                     android:gravity="left"
                     android:layout_gravity="left"
                     android:layout_alignParentLeft="true"
-                    android:paddingLeft="10dp"/>
+                    android:paddingLeft="10dp" />
 
                 <TextView
                     android:id="@+id/time_view2"
@@ -95,7 +100,8 @@
                     android:layout_gravity="left"
                     android:paddingLeft="10dp"
                     android:layout_alignParentLeft="true"
-                    android:layout_below="@id/title_view2"/>
+                    android:layout_below="@id/title_view2" />
+
                 <TextView
                     android:id="@+id/open_view2"
                     android:textSize="@dimen/open_view_text_size_small"
@@ -106,7 +112,8 @@
                     android:layout_gravity="right"
                     android:layout_alignParentRight="true"
                     android:layout_alignBaseline="@id/title_view2"
-                    android:paddingRight="10dp"/>
+                    android:paddingRight="10dp" />
+
                 <TextView
                     android:id="@+id/info_view2"
                     android:textSize="@dimen/info_view_text_size_small"
@@ -115,14 +122,13 @@
                     android:text="until closing time"
                     android:paddingLeft="10dp"
                     android:layout_toRightOf="@id/time_view2"
-                    android:layout_alignBaseline="@id/time_view2"
-                    />
+                    android:layout_alignBaseline="@id/time_view2" />
             </RelativeLayout>
 
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="2dp"
-                android:background="@android:color/darker_gray"/>
+                android:background="@android:color/darker_gray" />
 
             <!-- CHANDLER -->
 
@@ -131,6 +137,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:onClick="toChandler">
+
                 <TextView
                     android:id="@+id/title_view4"
                     android:textSize="@dimen/title_view_text_size_small"
@@ -140,7 +147,7 @@
                     android:gravity="left"
                     android:layout_gravity="left"
                     android:layout_alignParentLeft="true"
-                    android:paddingLeft="10dp"/>
+                    android:paddingLeft="10dp" />
 
                 <TextView
                     android:id="@+id/time_view4"
@@ -152,7 +159,8 @@
                     android:layout_gravity="left"
                     android:paddingLeft="10dp"
                     android:layout_alignParentLeft="true"
-                    android:layout_below="@id/title_view4"/>
+                    android:layout_below="@id/title_view4" />
+
                 <TextView
                     android:id="@+id/open_view4"
                     android:textSize="@dimen/open_view_text_size_small"
@@ -163,7 +171,8 @@
                     android:layout_gravity="right"
                     android:layout_alignParentRight="true"
                     android:layout_alignBaseline="@id/title_view4"
-                    android:paddingRight="10dp"/>
+                    android:paddingRight="10dp" />
+
                 <TextView
                     android:id="@+id/info_view4"
                     android:textSize="@dimen/info_view_text_size_small"
@@ -172,14 +181,13 @@
                     android:text="until closing time"
                     android:paddingLeft="10dp"
                     android:layout_toRightOf="@id/time_view4"
-                    android:layout_alignBaseline="@id/time_view4"
-                    />
+                    android:layout_alignBaseline="@id/time_view4" />
             </RelativeLayout>
 
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="2dp"
-                android:background="@android:color/darker_gray"/>
+                android:background="@android:color/darker_gray" />
 
             <!-- CAFE BROAD -->
 
@@ -188,6 +196,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:onClick="toCafeBroad">
+
                 <TextView
                     android:id="@+id/title_view5"
                     android:textSize="@dimen/title_view_text_size_small"
@@ -197,7 +206,7 @@
                     android:gravity="left"
                     android:layout_gravity="left"
                     android:layout_alignParentLeft="true"
-                    android:paddingLeft="10dp"/>
+                    android:paddingLeft="10dp" />
 
                 <TextView
                     android:id="@+id/time_view5"
@@ -209,7 +218,8 @@
                     android:layout_gravity="left"
                     android:paddingLeft="10dp"
                     android:layout_alignParentLeft="true"
-                    android:layout_below="@id/title_view5"/>
+                    android:layout_below="@id/title_view5" />
+
                 <TextView
                     android:id="@+id/open_view5"
                     android:textSize="@dimen/open_view_text_size_small"
@@ -220,7 +230,8 @@
                     android:layout_gravity="right"
                     android:layout_alignParentRight="true"
                     android:layout_alignBaseline="@id/title_view5"
-                    android:paddingRight="10dp"/>
+                    android:paddingRight="10dp" />
+
                 <TextView
                     android:id="@+id/info_view5"
                     android:textSize="@dimen/info_view_text_size_small"
@@ -229,15 +240,14 @@
                     android:text="until closing time"
                     android:paddingLeft="10dp"
                     android:layout_toRightOf="@id/time_view5"
-                    android:layout_alignBaseline="@id/time_view5"
-                    />
+                    android:layout_alignBaseline="@id/time_view5" />
             </RelativeLayout>
 
 
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="2dp"
-                android:background="@android:color/darker_gray"/>
+                android:background="@android:color/darker_gray" />
 
             <!-- BOOKSTORE -->
             <RelativeLayout
@@ -245,6 +255,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:onClick="toBookstore">
+
                 <TextView
                     android:id="@+id/title_view3"
                     android:textSize="@dimen/title_view_text_size_small"
@@ -254,7 +265,7 @@
                     android:gravity="left"
                     android:layout_gravity="left"
                     android:layout_alignParentLeft="true"
-                    android:paddingLeft="10dp"/>
+                    android:paddingLeft="10dp" />
 
                 <TextView
                     android:id="@+id/time_view3"
@@ -266,7 +277,8 @@
                     android:layout_gravity="left"
                     android:paddingLeft="10dp"
                     android:layout_alignParentLeft="true"
-                    android:layout_below="@id/title_view3"/>
+                    android:layout_below="@id/title_view3" />
+
                 <TextView
                     android:id="@+id/open_view3"
                     android:textSize="@dimen/open_view_text_size_small"
@@ -277,7 +289,8 @@
                     android:layout_gravity="right"
                     android:layout_alignParentRight="true"
                     android:layout_alignBaseline="@id/title_view3"
-                    android:paddingRight="10dp"/>
+                    android:paddingRight="10dp" />
+
                 <TextView
                     android:id="@+id/info_view3"
                     android:textSize="@dimen/info_view_text_size_small"
@@ -286,8 +299,7 @@
                     android:text="until closing time"
                     android:paddingLeft="10dp"
                     android:layout_toRightOf="@id/time_view3"
-                    android:layout_alignBaseline="@id/time_view3"
-                    />
+                    android:layout_alignBaseline="@id/time_view3" />
             </RelativeLayout>
 
 

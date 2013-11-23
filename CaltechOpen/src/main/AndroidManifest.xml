@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.jm2.caltechopen"
-    android:versionCode="5"
-    android:versionName="1.0.4" >
+    android:versionCode="9"
+    android:versionName="1.0.8" >
 
     <uses-sdk
         android:minSdkVersion="11"
@@ -47,6 +47,10 @@
         <activity
             android:name="com.jm2.caltechopen.CafeBroadActivity"
             android:label="Cafe Broad" >
+        </activity>
+        <activity
+            android:name="com.jm2.caltechopen.BraunActivity"
+            android:label="Braun" >
         </activity>
     </application>
 

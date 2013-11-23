@@ -22,16 +22,16 @@
 
             <TextView
                 android:id="@+id/title"
-                android:textSize="@dimen/store_title_large"
+                android:textSize="@dimen/store_title_xlarge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cafe Broad"
+                android:text="Bookstore"
                 android:gravity="center"
                 android:layout_gravity="center" />
 
             <TextView
                 android:id="@+id/weekdays"
-                android:textSize="@dimen/store_days_large"
+                android:textSize="@dimen/store_days_xlarge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Monday - Friday"
@@ -41,13 +41,14 @@
 
             <TextView
                 android:id="@+id/times"
-                android:textSize="@dimen/store_times_large"
+                android:textSize="@dimen/store_times_xlarge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="7:45am - 2:30pm"
+                android:text="8:30am - 5:30pm"
                 android:gravity="center"
                 android:layout_gravity="center" />
         </LinearLayout>
     </ScrollView>
+
 
 </LinearLayout>

@@ -22,16 +22,16 @@
 
             <TextView
                 android:id="@+id/title"
-                android:textSize="@dimen/store_title_large"
+                android:textSize="@dimen/store_title_small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cafe Broad"
+                android:text="Braun/Brown Gyms"
                 android:gravity="center"
                 android:layout_gravity="center" />
 
             <TextView
                 android:id="@+id/weekdays"
-                android:textSize="@dimen/store_days_large"
+                android:textSize="@dimen/store_days_small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Monday - Friday"
@@ -41,13 +41,42 @@
 
             <TextView
                 android:id="@+id/times"
-                android:textSize="@dimen/store_times_large"
+                android:textSize="@dimen/store_times_small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="7:45am - 2:30pm"
+                android:text="6:00am - 10:30pm"
                 android:gravity="center"
                 android:layout_gravity="center" />
+
+            <TextView
+                android:id="@+id/weekdays2"
+                android:textSize="@dimen/store_days_small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Saturday - Sunday"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:paddingTop="10dp" />
+
+            <TextView
+                android:id="@+id/times2"
+                android:textSize="@dimen/store_times_small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="8:00am - 8:00pm"
+                android:gravity="center"
+                android:layout_gravity="center" />
+
+            <TextView
+                android:id="@+id/braun_info_view"
+                android:textSize="@dimen/store_times_small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/braun_info"
+                android:autoLink="web"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:paddingTop="40dp" />
         </LinearLayout>
     </ScrollView>
-
 </LinearLayout>

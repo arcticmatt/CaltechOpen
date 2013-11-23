@@ -34,11 +34,7 @@ public class MainActivity extends Activity {
     {
         super.onResume();
         Calendar countDownCalendar = Calendar.getInstance();
-        int year = countDownCalendar.get(Calendar.YEAR);
-        String[] titleArray = new String[4];
 
-        long currentTimeMillis = countDownCalendar.getTimeInMillis();
-        int month = countDownCalendar.get(Calendar.MONTH) + 1;
         int dayOfWeek = countDownCalendar.get(Calendar.DAY_OF_WEEK);
         int hour = countDownCalendar.get(Calendar.HOUR_OF_DAY);
         int minute = countDownCalendar.get(Calendar.MINUTE);
@@ -53,10 +49,11 @@ public class MainActivity extends Activity {
         int[] viewIds3 = {R.id.time_view3, R.id.info_view3, R.id.title_view3, R.id.open_view3};
         int[] viewIds4 = {R.id.time_view4, R.id.info_view4, R.id.title_view4, R.id.open_view4};
         int[] viewIds5 = {R.id.time_view5, R.id.info_view5, R.id.title_view5, R.id.open_view5};
-        int[][] viewIds = {viewIds1, viewIds2, viewIds3, viewIds4, viewIds5};
+        int[] viewIds6 = {R.id.time_view6, R.id.info_view6, R.id.title_view6, R.id.open_view6};
+        int[][] viewIds = {viewIds1, viewIds2, viewIds3, viewIds4, viewIds5, viewIds6};
 
 
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 6; i++)
         {
             long[] openAndTime = getInfo(i, dayOfWeek, millisecondsInDay);
             int isOpen = (int) openAndTime[0];
@@ -97,6 +94,11 @@ public class MainActivity extends Activity {
         Intent intent = new Intent(this, CafeBroadActivity.class);
         startActivity(intent);
     }
+    public void toBraun(View view)
+    {
+        Intent intent = new Intent(this, BraunActivity.class);
+        startActivity(intent);
+    }
 
     public long[] getInfo(int store, int dayOfWeek, long millis) {
         long[] returnVals = null;
@@ -116,6 +118,9 @@ public class MainActivity extends Activity {
         else if (store == 4) {
             returnVals = getCafeBroadInfo(dayOfWeek, millis);
         }
+        else if (store == 5) {
+            returnVals = getBraunBrownInfo(dayOfWeek, millis);
+        }
 
         return returnVals;
     }
@@ -126,12 +131,12 @@ public class MainActivity extends Activity {
         long timeToClose = 0;
         /*** C store ***/
         if (dayOfWeek == Calendar.SUNDAY) {
-            if (millisecondsInDay < 39600000) {
+            if (millisecondsInDay < 43200000) {
                 open = false;
-                timeToOpen = 39600000 - millisecondsInDay;
-            } else if (millisecondsInDay >= 39600000 && millisecondsInDay < 43200000) {
+                timeToOpen = 43200000 - millisecondsInDay;
+            } else if (millisecondsInDay >= 43200000 && millisecondsInDay < 50400000) {
                 open = true;
-                timeToClose = 43200000 - millisecondsInDay;
+                timeToClose = 50400000 - millisecondsInDay;
             } else if (millisecondsInDay >= 43200000 && millisecondsInDay < 44100000) {
                 open = false;
                 timeToOpen = 44100000 - millisecondsInDay;
@@ -163,8 +168,6 @@ public class MainActivity extends Activity {
                 open = true;
                 timeToClose = 90000000 - millisecondsInDay;
             }
-
-
         }
         else if (dayOfWeek == Calendar.MONDAY || dayOfWeek == Calendar.TUESDAY
                 || dayOfWeek == Calendar.WEDNESDAY
@@ -199,7 +202,7 @@ public class MainActivity extends Activity {
                 timeToClose = 3600000 - millisecondsInDay;
             } else if (millisecondsInDay >= 3600000 && millisecondsInDay < 39600000) {
                 open = false;
-                timeToClose = 39600000 - millisecondsInDay;
+                timeToOpen = 39600000 - millisecondsInDay;
             } else if (millisecondsInDay >= 39600000 && millisecondsInDay < 50400000) {
                 open = true;
                 timeToClose = 50400000 - millisecondsInDay;
@@ -524,6 +527,99 @@ public class MainActivity extends Activity {
         }
         return returnVals;
     }
+
+    public long[] getBraunBrownInfo(int dayOfWeek, long millisecondsInDay) {
+        boolean open = true;
+        long timeToOpen = 0;
+        long timeToClose = 0;
+        /*** Braun/Brown Athletic Centers ***/
+        if (dayOfWeek == Calendar.MONDAY || dayOfWeek == Calendar.TUESDAY
+                || dayOfWeek == Calendar.WEDNESDAY
+                || dayOfWeek == Calendar.THURSDAY)
+        {
+            if (millisecondsInDay < 21600000)
+            {
+                open = false;
+                timeToOpen = 21600000 - millisecondsInDay;
+            }
+            else if (millisecondsInDay >= 21600000 && millisecondsInDay < 81000000)
+            {
+                open = true;
+                timeToClose = 81000000 - millisecondsInDay;
+            }
+            else if (millisecondsInDay >= 81000000)
+            {
+                open = false;
+                timeToOpen = 86400000 - millisecondsInDay + 21600000;
+            }
+        }
+        else if (dayOfWeek == Calendar.FRIDAY)
+        {
+            if (millisecondsInDay < 21600000)
+            {
+                open = false;
+                timeToOpen = 21600000 - millisecondsInDay;
+            }
+            else if (millisecondsInDay >= 21600000 && millisecondsInDay < 81000000)
+            {
+                open = true;
+                timeToClose = 81000000 - millisecondsInDay;
+            }
+            else if (millisecondsInDay >= 81000000)
+            {
+                open = false;
+                timeToOpen = 86400000 - millisecondsInDay + 28800000;
+            }
+        }
+        else if (dayOfWeek == Calendar.SATURDAY)
+        {
+            if (millisecondsInDay < 28800000)
+            {
+                open = false;
+                timeToOpen = 28800000 - millisecondsInDay;
+            }
+            else if (millisecondsInDay >= 28800000 && millisecondsInDay < 72000000)
+            {
+                open = true;
+                timeToClose = 72000000 - millisecondsInDay;
+            }
+            else if (millisecondsInDay >= 72000000)
+            {
+                open = false;
+                timeToOpen = 86400000 - millisecondsInDay + 28800000;
+            }
+        }
+        else if (dayOfWeek == Calendar.SUNDAY)
+        {
+            if (millisecondsInDay < 28800000)
+            {
+                open = false;
+                timeToOpen = 28800000 - millisecondsInDay;
+            }
+            else if (millisecondsInDay >= 28800000 && millisecondsInDay < 72000000)
+            {
+                open = true;
+                timeToClose = 72000000 - millisecondsInDay;
+            }
+            else if (millisecondsInDay >= 72000000)
+            {
+                open = false;
+                timeToOpen = 86400000 - millisecondsInDay + 21600000;
+            }
+        }
+
+        long[] returnVals = new long[2];
+        if (open) {
+            returnVals[0] = 0;
+            returnVals[1] = timeToClose;
+        }
+        else {
+            returnVals[0] = 1;
+            returnVals[1] = timeToOpen;
+        }
+        return returnVals;
+    }
+
 
 
 }
