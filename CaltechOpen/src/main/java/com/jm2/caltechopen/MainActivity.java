@@ -131,42 +131,19 @@ public class MainActivity extends Activity {
         long timeToClose = 0;
         /*** C store ***/
         if (dayOfWeek == Calendar.SUNDAY) {
-            if (millisecondsInDay < 43200000) {
-                open = false;
-                timeToOpen = 43200000 - millisecondsInDay;
-            } else if (millisecondsInDay >= 43200000 && millisecondsInDay < 50400000) {
-                open = true;
-                timeToClose = 50400000 - millisecondsInDay;
-            } else if (millisecondsInDay >= 43200000 && millisecondsInDay < 44100000) {
-                open = false;
-                timeToOpen = 44100000 - millisecondsInDay;
-            } else if (millisecondsInDay >= 44100000 && millisecondsInDay < 50400000) {
-                open = true;
-                timeToClose = 50400000 - millisecondsInDay;
-            } else if (millisecondsInDay >= 5040000 && millisecondsInDay < 52200000) {
-                open = false;
-                timeToOpen = 52200000 - millisecondsInDay;
-            } else if (millisecondsInDay >= 52200000 && millisecondsInDay < 61200000) {
-                open = true;
-                timeToClose = 61200000 - millisecondsInDay;
-            } else if (millisecondsInDay >= 61200000 && millisecondsInDay < 62100000) {
-                open = false;
-                timeToOpen = 62100000 - millisecondsInDay;
-            } else if (millisecondsInDay >= 62100000 && millisecondsInDay < 70200000) {
-                open = true;
-                timeToClose = 70200000 - millisecondsInDay;
-            } else if (millisecondsInDay >= 70200000 && millisecondsInDay < 72000000) {
-                open = false;
-                timeToOpen = 72000000 - millisecondsInDay;
-            } else if (millisecondsInDay >= 72000000 && millisecondsInDay < 82800000) {
-                open = true;
-                timeToClose = 82800000 - millisecondsInDay;
-            } else if (millisecondsInDay >= 82800000 && millisecondsInDay < 83700000) {
-                open = false;
-                timeToOpen = 83700000 - millisecondsInDay;
-            } else if (millisecondsInDay >= 83700000 && millisecondsInDay < 90000000) {
-                open = true;
-                timeToClose = 90000000 - millisecondsInDay;
+            int[] times = {0, 43200000, 50400000, 51300000, 59400000,
+                    61200000, 72000000, 72900000, 77400000, 79200000, 90000000};
+            for (int i = 0; i < times.length - 1; i++) {
+                if (millisecondsInDay >= times[i] &&
+                        millisecondsInDay < times[i + 1]) {
+                    if (i % 2 == 0) {
+                        open = false;
+                        timeToOpen = times[i + 1] - millisecondsInDay;
+                    } else {
+                        open = true;
+                        timeToClose = times[i + 1] - millisecondsInDay;
+                    }
+                }
             }
         }
         else if (dayOfWeek == Calendar.MONDAY || dayOfWeek == Calendar.TUESDAY
@@ -197,36 +174,19 @@ public class MainActivity extends Activity {
             }
         }
         else if (dayOfWeek == Calendar.SATURDAY) {
-            if (millisecondsInDay < 3600000) {
-                open = true;
-                timeToClose = 3600000 - millisecondsInDay;
-            } else if (millisecondsInDay >= 3600000 && millisecondsInDay < 39600000) {
-                open = false;
-                timeToOpen = 39600000 - millisecondsInDay;
-            } else if (millisecondsInDay >= 39600000 && millisecondsInDay < 50400000) {
-                open = true;
-                timeToClose = 50400000 - millisecondsInDay;
-            } else if (millisecondsInDay >= 50400000 && millisecondsInDay < 51300000) {
-                open = false;
-                timeToOpen = 51300000 - millisecondsInDay;
-            } else if (millisecondsInDay >= 51300000 && millisecondsInDay < 56700000) {
-                open = true;
-                timeToClose = 56700000 - millisecondsInDay;
-            } else if (millisecondsInDay >= 56700000 && millisecondsInDay < 58500000) {
-                open = false;
-                timeToOpen = 58500000 - millisecondsInDay;
-            } else if (millisecondsInDay >= 58500000 && millisecondsInDay < 72000000) {
-                open = true;
-                timeToClose = 72000000 - millisecondsInDay;
-            } else if (millisecondsInDay >= 72000000 && millisecondsInDay < 72900000) {
-                open = false;
-                timeToOpen = 72900000 - millisecondsInDay;
-            } else if (millisecondsInDay >= 72900000 && millisecondsInDay < 79200000) {
-                open = true;
-                timeToClose = 79200000 - millisecondsInDay;
-            } else if (millisecondsInDay >= 79200000) {
-                open = false;
-                timeToOpen = 39600000 + (86400000 - millisecondsInDay);
+            int[] times = {0, 39600000, 49500000, 50400000, 55800000, 57600000,
+                    64800000, 65700000, 73800000, 75600000, 79200000, 129600000};
+            for (int i = 0; i < times.length - 1; i++) {
+                if (millisecondsInDay >= times[i] &&
+                        millisecondsInDay < times[i + 1]) {
+                    if (i % 2 == 0) {
+                        open = false;
+                        timeToOpen = times[i + 1] - millisecondsInDay;
+                    } else {
+                        open = true;
+                        timeToClose = times[i + 1] - millisecondsInDay;
+                    }
+                }
             }
         }
 
