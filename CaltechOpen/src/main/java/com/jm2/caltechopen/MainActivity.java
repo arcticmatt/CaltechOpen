@@ -150,27 +150,19 @@ public class MainActivity extends Activity {
                 || dayOfWeek == Calendar.WEDNESDAY
                 || dayOfWeek == Calendar.THURSDAY
                 || dayOfWeek == Calendar.FRIDAY) {
-            if (millisecondsInDay < 3600000) {
-                open = true;
-                timeToClose = 3600000 - millisecondsInDay;
-            } else if (millisecondsInDay >= 3600000 && millisecondsInDay < 34200000) {
-                open = false;
-                timeToOpen = 34200000 - millisecondsInDay;
-            } else if (millisecondsInDay >= 34200000 && millisecondsInDay < 77400000) {
-                open = true;
-                timeToClose = 77400000 - millisecondsInDay;
-            } else if (millisecondsInDay >= 77400000 && millisecondsInDay < 79200000) {
-                open = false;
-                timeToOpen = 79200000 - millisecondsInDay;
-            } else if (millisecondsInDay >= 79200000 && millisecondsInDay < 83700000) {
-                open = true;
-                timeToClose = 83700000 - millisecondsInDay;
-            } else if (millisecondsInDay >= 83700000 && millisecondsInDay < 84600000) {
-                open = false;
-                timeToOpen = 84600000 - millisecondsInDay;
-            } else if (millisecondsInDay >= 84600000 && millisecondsInDay < 90000000) {
-                open = true;
-                timeToClose = 90000000 - millisecondsInDay;
+            int[] times = {0, 3600000, 34200000, 77400000, 79200000, 83700000,
+                    84600000, 90000000};
+            for (int i = 0; i < times.length - 1; i++) {
+                if (millisecondsInDay >= times[i] &&
+                        millisecondsInDay < times[i + 1]) {
+                    if (i % 2 == 0) {
+                        open = true;
+                        timeToClose = times[i + 1] - millisecondsInDay;
+                    } else {
+                        open = false;
+                        timeToOpen = times[i + 1] - millisecondsInDay;
+                    }
+                }
             }
         }
         else if (dayOfWeek == Calendar.SATURDAY) {
