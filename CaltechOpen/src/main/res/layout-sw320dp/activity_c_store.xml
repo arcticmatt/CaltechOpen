@@ -81,7 +81,7 @@
                 android:textSize="@dimen/store_breaks_small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="(closed for breaks from 2:00pm - 2:15 pm, 3:45pm - 4:15pm, and 8:00pm - 8:15pm)"
+                android:text="(closed for breaks from 1:45pm - 2:00pm, 3:30pm - 4:00pm, 6:00pm - 6:15pm, and 8:30pm - 9:00pm)"
                 android:gravity="center"
                 android:layout_gravity="center" />
 
@@ -109,7 +109,7 @@
                 android:textSize="@dimen/store_breaks_small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="(closed for breaks from 12:00pm - 12:15pm, 2:00pm - 2:30pm, 5:00pm - 5:15pm, 7:30pm - 8:00pm, and 11:00pm - 11:15pm)"
+                android:text="(closed for breaks from 2:00pm - 2:15pm, 4:30pm - 5:00pm, 8:00pm - 8:15pm, and 9:30pm - 10:00pm)"
                 android:gravity="center"
                 android:layout_gravity="center" />
         </LinearLayout>
