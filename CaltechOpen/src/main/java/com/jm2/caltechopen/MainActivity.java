@@ -166,17 +166,18 @@ public class MainActivity extends Activity {
             }
         }
         else if (dayOfWeek == Calendar.SATURDAY) {
-            int[] times = {0, 39600000, 49500000, 50400000, 55800000, 57600000,
+            int[] times = {0, 3600000, 39600000, 49500000, 50400000, 55800000, 57600000,
                     64800000, 65700000, 73800000, 75600000, 79200000, 129600000};
             for (int i = 0; i < times.length - 1; i++) {
                 if (millisecondsInDay >= times[i] &&
                         millisecondsInDay < times[i + 1]) {
                     if (i % 2 == 0) {
-                        open = false;
-                        timeToOpen = times[i + 1] - millisecondsInDay;
-                    } else {
                         open = true;
                         timeToClose = times[i + 1] - millisecondsInDay;
+
+                    } else {
+                        open = false;
+                        timeToOpen = times[i + 1] - millisecondsInDay;
                     }
                 }
             }
